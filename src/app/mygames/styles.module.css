@@ -1,0 +1,53 @@
+.container{
+    width: 70%;
+    margin: 5rem auto 0 auto;
+}
+
+.title{
+    font-size: 3.4rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.infoLabel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 3rem 0;
+}
+
+.minTitle{
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gamesContainer {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+}

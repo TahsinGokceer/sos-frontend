@@ -1,0 +1,43 @@
+.container{    
+    width: 70%;
+    margin: 5rem auto 0 auto;
+}
+
+.infoLabel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 3rem 0;
+}
+
+.title{
+    font-size: 3.4rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.icon{
+    position: relative;
+    top: -15px;
+    right: -20px;
+    font-weight: 100;
+    font-size: 1rem;
+    margin-left: 1rem;
+    z-index: 1;
+}
+
+.info{
+    z-index: 0;
+    border: 1px solid #000;
+    padding:10px 20px;
+    border-radius: 7px;
+}
+
+.btn{
+    border: 1px solid #000;
+    border-radius: 7px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}

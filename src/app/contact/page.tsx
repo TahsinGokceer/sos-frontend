@@ -19,8 +19,6 @@ function Contact(){
     return (
         <div>
             <AppBar user={loginUser}/>
-
-      
             <h1>Contact Us:</h1>
             <p>If you have any questions, feedback, or suggestions, feel free to reach out to us. We'd love to hear from you!</p>
             <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
