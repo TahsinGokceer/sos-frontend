@@ -1,0 +1,43 @@
+.container{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.header{
+    border: 1px solid #000;
+}
+
+.title{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.text{
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+}
+
+.pointTable{
+    width: 35%;
+    border: 1px solid #e4cccc;
+    padding: 5px;
+    background-color: rgb(163, 198, 247);
+    /* margin: 3% 7%; */
+    min-height: 250px;
+}
+
+.td{    
+    margin: 0 3rem;
+}
+
+.btn{
+    width: 40%;
+    margin: 0 30%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+}

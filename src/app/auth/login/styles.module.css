@@ -1,0 +1,46 @@
+.container{    
+    width: 17%;
+    height: 20%;
+    margin: auto;
+    margin-top: 10%;    
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    border: 1px solid #000;
+    margin: .5rem 0 2rem 0;
+    padding: 0.5rem;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.btn{
+    font-size: 1.1rem;
+    font-weight: 400;
+    border: 1px solid #000;
+    padding: 7px;
+    border-radius: 7px;
+    width: 50%;
+    margin: 0 auto;
+    transition: all .3s;
+}
+
+.btn:hover{
+    color: white;
+    background-color: #000;
+}
+
+.title{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 auto 3rem auto;
+}
+
+.label{
+    font-weight: 500;
+}
