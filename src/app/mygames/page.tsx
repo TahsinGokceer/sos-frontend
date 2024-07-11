@@ -32,6 +32,8 @@ function Mygames() {
                     <p>Games Won: {loginUser && loginUser.gamesWon}</p>
                     <p>Games Draw: {loginUser && loginUser.totalGames - (loginUser.gamesWon + loginUser.gamesLost)}</p>
                     <p>Games Lost: {loginUser && loginUser.gamesLost}</p>
+                    <p>Point: {loginUser && loginUser.point}</p>
+
                 </div>
                 <h4 className={styles.minTitle}>Son 5 oyun durumun:</h4>
             </div>

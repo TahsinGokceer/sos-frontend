@@ -1,21 +1,34 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {io} from "socket.io-client";
 import {useRouter} from "next/navigation";
 import styles from "./styles.module.css";
 import AppBar from "./components/appbar";
 
 function HomePage() {
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState<any>([])
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [socket, setSocket] = useState<any>(null);
     const router = useRouter()
+
+    // useEffect(() => {
+    //     // Component mount olduğunda socket bağlantısını oluştur
+    //     const newSocket = io("http://localhost:3001", { withCredentials: true });
+    //     setSocket(newSocket);
+
+    //     return () => {
+    //         // Component unmount olduğunda socket bağlantısını kapat
+    //         newSocket.disconnect();
+    //     };
+    // }, []);
 
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const response = await axios.get("http://localhost:3001/user/getAllUser");  // , { userName, email, password }, { withCredentials: true }                
-                // const sortedUsers = response.data.allUsers.sort((a: { point: number }, b: { point: number }) => b.point - a.point);
+                response.data.allUsers.sort((a: { point: number }, b: { point: number }) => b.point - a.point);
                 
                 setUsers(response.data.allUsers);
                 setLoading(false);
@@ -25,12 +38,18 @@ function HomePage() {
                 setLoading(false);
             }
         };
-        
+
         fetchUsers();
     }, []);
 
-    const goToTournament = () => {
-        router.push("/tournaments")
+    const findGame = async () => {
+        const response = await axios.get("http://localhost:3001/game/find", { withCredentials: true })
+        // socket.emit("setUserID", response.data.id)
+        // socket.on("hi", async (data) => {
+        //     console.log(data);
+            
+        // })
+        console.log(response.data.id);
     }
 
     if (loading) return <div>Loading...</div>;
@@ -41,7 +60,7 @@ function HomePage() {
             <div className={styles.header}>
                 <h1 className={styles.title}>TicTacToe</h1>
                 <p className={styles.text}>Hızlı bir oyun arayarak oynamaya başlayabilirsin.</p>
-                <button className={styles.btn}>Oyun Ara</button>
+                <button onClick={findGame} className={styles.btn}>Oyun Ara</button>
             </div>
             <div className={styles.pointTable}>
                 <h1>Point List</h1>
