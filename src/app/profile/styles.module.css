@@ -1,43 +1,77 @@
+.mainContainer{
+    background: linear-gradient(90deg, rgba(104,59,133,1) 0%, rgba(77,61,142,1) 50%, rgba(51,103,173,1) 100%);
+    width: 100vw;
+    height: 90.2vh;
+    padding: 3rem 0;
+    margin: 0;
+    color: whitesmoke;
+}
+
 .container{    
-    width: 70%;
-    margin: 5rem auto 0 auto;
+    width: 50%;
+    min-height: 500px;
+    margin: 0 auto;
 }
 
 .infoLabel{
     display: flex;
-    align-items: center;
+    flex-direction: column; 
     justify-content: space-between;
+    height: 400px;
+    width: 50%;
     font-size: 1.2rem;
     font-weight: 600;
     padding: 3rem 0;
+    margin: auto;
 }
 
 .title{
     font-size: 3.4rem;
     font-weight: bold;
     margin: 0;
+    text-align: center;
 }
 
-.icon{
-    position: relative;
-    top: -15px;
-    right: -20px;
-    font-weight: 100;
+.icon{    
+    font-size: .9rem;
+    margin: 0 .9rem;
+}
+
+.input{
+    padding: 8px;
     font-size: 1rem;
-    margin-left: 1rem;
-    z-index: 1;
+    color: #000;
 }
 
-.info{
-    z-index: 0;
-    border: 1px solid #000;
-    padding:10px 20px;
-    border-radius: 7px;
+.input:last-of-type{
+    margin-right: 1rem;
 }
+
+.input::placeholder{
+    color: #666;
+}
+
 
 .btn{
     border: 1px solid #000;
     border-radius: 7px;
     padding: 10px 20px;
     font-size: 1rem;
+}
+
+.updateBtn{
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: .8rem;   
+}
+
+.span{
+    font-size: 0.8rem;
+    color: rgb(253, 42, 42);
+}
+
+.spanSuccess{
+    font-size: 0.9rem;
+    color: rgb(25, 139, 25);
 }

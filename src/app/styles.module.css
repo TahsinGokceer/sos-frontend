@@ -1,43 +1,71 @@
-.container{
-    width: 80%;
+.container {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
-    margin: auto;
-    margin-top: 5%;
+    background: linear-gradient(45deg, #2c3e50 0%, #bdc3c7 100%);;
+    background-blend-mode: multiply, multiply;
+    color: whitesmoke;
 }
 
-.header{
-    border: 1px solid #000;
+.leftSection {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 2; 
+    padding: 3rem;    
 }
 
-.title{
-    font-size: 2rem;
-    font-weight: bold;
+.leftSection *{
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.title {
+    text-align: center;
     margin-bottom: 2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
-.text{
-    font-size: 1.2rem;
-    margin-bottom: 4rem;
+.rightSection {
+    flex: 2;
+    padding: 2rem;
 }
 
-.pointTable{
-    width: 35%;
-    border: 1px solid #e4cccc;
-    padding: 5px;
-    background-color: rgb(163, 198, 247);
-    /* margin: 3% 7%; */
+.pointTable {
+    margin: 3% 7%;
     min-height: 250px;
 }
 
-.td{    
-    margin: 0 3rem;
+.pointTable thead {
+    position: sticky;
+    top: 0;
+    background-color: #EDF1F4;
 }
 
-.btn{
-    width: 40%;
-    margin: 0 30%;
+.pointTable th {
+    color: #000;
+    background-color: inherit;
+    width: 20%;
+}
+
+.pointTable tbody tr {
+    line-height: 3;
+}
+
+.pointTable tbody td{
+    text-align: center;
+}
+
+.btn {
     border: 1px solid #000;
     border-radius: 10px;
+    margin: 0 auto;
     padding: 0.7rem 1rem;
+    width: 25%;
+}
+
+.btn:hover{
+    color: white;
+    background-color: #000;
 }

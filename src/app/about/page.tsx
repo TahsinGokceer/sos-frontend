@@ -1,23 +1,24 @@
 "use client"
 import { useState, useEffect } from "react";
 import axios from "axios";
+import styless from "./styles.module.css"
 import AppBar from "../components/appbar"
 
-function About(){
+function About() {
     const [loginUser, setLoginUser] = useState();
 
     useEffect(() => {
         const fetchUser = async () => {
             const response = await axios.get("http://localhost:3001/page/home", { withCredentials: true })
-            setLoginUser(response.data.loginUser)           
+            setLoginUser(response.data.loginUser)
         }
-        
+
         fetchUser()
-    },[])
+    }, [])
 
     return (
         <div>
-            <AppBar user={loginUser}/>
+            <AppBar user={loginUser} />            
             <div style={styles.container}>
                 <h1 style={styles.title}>About Us</h1>
                 <p style={styles.text}>
@@ -39,6 +40,7 @@ function About(){
 }
 
 const styles = {
+    
     container: {
         padding: '40px 20px',
         backgroundColor: '#f9f9f9',

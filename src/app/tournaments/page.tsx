@@ -7,22 +7,22 @@ import styles from "./styles.module.css"
 
 const TournamentsPage = () => {
     const [activeTournament, setActiveTournament] = useState([]);
-    const [loginUser, setLoginUser] = useState();   
+    const [loginUser, setLoginUser] = useState();
 
     useEffect(() => {
         const fetchUser = async () => {
             const response = await axios.get("http://localhost:3001/page/home", { withCredentials: true })
-            setLoginUser(response.data.loginUser)           
+            setLoginUser(response.data.loginUser)
         }
-        
+
         getActiveTournaments();
-        fetchUser()        
-    },[])
+        fetchUser()
+    }, [])
 
     const getActiveTournaments = async () => {
         try {
             const response = await axios.get('http://localhost:3001/tournament/find', { withCredentials: true });
-            console.log(response.data.activeTournaments);            
+            console.log(response.data.activeTournaments);
             setActiveTournament(response.data.activeTournaments);
 
         } catch (error) {
@@ -39,21 +39,23 @@ const TournamentsPage = () => {
 
     return (
         <div>
-            <AppBar user={loginUser}/>
-            <div className={styles.container}>
-                <h1 className={styles.title}>Tournaments</h1>
-                <p className={styles.text}>Hemen bir turnuvaya katıl ve oynamaya başla</p>
+            <AppBar user={loginUser} />
+            <div className={styles.mainContainer}>
+                <div className={styles.container}>
+                    <h1 className={styles.title}>Tournaments</h1>
+                    <p className={styles.text}>Hemen bir turnuvaya katıl ve oynamaya başla</p>
 
-                <div className={styles.cards}>
-                    {
-                        activeTournament ? (                        
-                            activeTournament.map(tournament => (                                
-                                <Card user={loginUser} tournament={tournament}/>
-                            ))
-                        ) : (<><p>Aktif turnuva yok</p></>)
-                    }
-                </div>                
-            </div>        
+                    <div className={styles.cards}>
+                        {
+                            activeTournament ? (
+                                activeTournament.map(tournament => (
+                                    <Card user={loginUser} tournament={tournament} />
+                                ))
+                            ) : (<><p>Aktif turnuva yok</p></>)
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

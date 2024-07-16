@@ -1,3 +1,12 @@
+.mainContainer{
+    background: linear-gradient(90deg, rgba(104,59,133,1) 0%, rgba(77,61,142,1) 50%, rgba(51,103,173,1) 100%);
+    width: 100vw;
+    height: 90.2vh;
+    padding: 3rem 0;
+    margin: 0;
+    color: whitesmoke;
+}
+
 .container {
     width: 70%;
     margin: auto;
