@@ -2,6 +2,177 @@
     width: 100%;
     height: 100%;
     display: flex;
+    /* background-image: linear-gradient(45deg, #2c3e50 0%, #bdc3c7 100%); */
+    background-image: url("https://r.resimlink.com/iujOgS2X.jpeg");
+    background-blend-mode: multiply, multiply;
+    overflow: hidden;
+    align-items: flex-start; 
+}
+
+.leftSection {
+    flex: 1.5;
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    /* overflow-y: auto; */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.rightSection {
+    flex: 2;
+    padding: 2rem;
+    color: white;
+    top: 0;
+}
+
+.userlist {
+    /* ... */
+}
+
+.pointTable {
+    padding: 5px;
+    margin: 3% 7%;
+    min-height: 250px;
+    max-height: 75vh;
+    /* Tabloya maksimum yükseklik verin */
+    overflow-y: auto;
+}
+
+.pointTable::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+.td {
+    margin: 0 3rem;
+
+}
+
+.pointTable thead {
+    overflow-y: hidden;
+    position: sticky;
+    top: 0;
+    /* z-index: 3; */
+    width: 100;
+    /* background-image: linear-gradient(to right, #7ac5d8 0%, #b49fda 19%, #57c6e1 42%, #bbc1bf 79%, #eea2a2 100%); */
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    
+}
+
+.pointTable th {
+    background-color: inherit;
+
+}
+
+.pointTable th,
+.pointTable td {   
+    text-align: center;    
+    padding: 10px;
+    
+}
+
+.pointTable th:first-child {
+    width: 20%;
+}
+
+.pointTable th:nth-child(2) {
+    width: 20%;
+}
+
+.pointTable th:nth-child(3) {
+    width: 20%;
+}
+
+.pointTable th:nth-child(4) {
+    width: 20%;
+}
+
+.pointTable th:nth-child(5) {
+    width: 50%;
+}
+
+.pointTable tbody tr:nth-child(even) {
+    background: transparent;
+    color: #83EEFF;
+    font-weight: bold;
+}
+
+.pointTable tbody tr:nth-child(odd) {
+    background: transparent;
+    color: #FF10F0;
+    font-weight: bold;
+}
+
+.pointTable tbody tr {
+    line-height: 3;
+    /* border: 1px solid white; */
+}
+
+.btn {
+    /* border: 2px dotted #fff; */
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background: #FF10F0;
+    color: white;
+    box-shadow: 0 2px 3px #888888;
+}
+
+.btn:hover {
+    background: #00d6f7
+}
+
+.container h1 {
+    text-align: center;
+    /* Metni yatayda ortala */
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Times New Roman', sans-serif;
+    /* Specify the font family */
+    margin-bottom: 1.5rem;
+    color: #FF10F0;
+}
+
+.leftSection p {
+    text-align: center;
+    /* Metni iki yana yaslar */
+    line-height: 3;
+    /* Satır aralarını genişletir */
+}
+
+.leftSection ul {
+    text-align: center;
+    line-height: 3;
+    /* Liste elemanları arasındaki boşluğu artırır */
+}
+
+.leftSection li {
+    margin-bottom: 2;
+    /* Liste elemanları arasına ekstra boşluk ekler */
+}
+
+
+
+
+
+
+
+
+
+
+/*
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
     background: linear-gradient(45deg, #2c3e50 0%, #bdc3c7 100%);;
     background-blend-mode: multiply, multiply;
     color: whitesmoke;
@@ -69,3 +240,5 @@
     color: white;
     background-color: #000;
 }
+
+*/

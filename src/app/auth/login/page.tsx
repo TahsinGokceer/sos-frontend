@@ -2,6 +2,7 @@
 import { useState } from "react"
 import styles from "./styles.module.css"
 import axios from "axios"
+import Link from "next/link"
 import {useRouter} from "next/navigation";
 
 export default function Login() {
@@ -39,7 +40,8 @@ export default function Login() {
                 <label className={styles.label}>Password</label>
                 <input className={styles.input} value={password} onChange={e => setPassword(e.target.value)} type="text" />
 
-                <button className={styles.btn} onClick={e => handleSubmit(e)}>Giriş</button>
+                <button className={styles.btn} onClick={e => handleSubmit(e)}>Log In</button>
+                <p className={styles.minText}>Are you new? <Link className={styles.link} href="/auth/register">Sign Up</Link></p>
             </div>
         </div>
     )

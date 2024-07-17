@@ -1,15 +1,21 @@
 .mainContainer{
-    background: linear-gradient(90deg, rgba(104,59,133,1) 0%, rgba(77,61,142,1) 50%, rgba(51,103,173,1) 100%);
+    background-image: url("https://r.resimlink.com/FyAGY.jpg");
     width: 100vw;
     height: 90.2vh;
     padding: 3rem 0;
     margin: 0;
     color: whitesmoke;
+    overflow-y: auto;
+}
+
+.mainContainer::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .container{
     width: 70%;
-    margin: 5rem auto 0 auto;
+    margin: 0 auto;
 }
 
 .title{
@@ -43,4 +49,8 @@
     margin: 0 auto;
     justify-content: space-around;
     align-items: center;
+}
+
+.p {
+    text-align: center;
 }

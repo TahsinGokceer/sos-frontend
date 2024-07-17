@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styles from "./styles.module.css"
 import axios from 'axios';
+import Link from "next/link"
 import {useRouter} from "next/navigation";
 
 function Register() {
@@ -45,6 +46,7 @@ function Register() {
                 <input className={styles.input} value={password} onChange={e => setPassword(e.target.value)} type="text" />
 
                 <button className={styles.btn} onClick={e => handleSubmit(e)}>Submit</button>
+                <p className={styles.minText}>Already registered? <Link className={styles.link} href="/auth/login">Log In</Link></p>
             </div>
         </div>
     )

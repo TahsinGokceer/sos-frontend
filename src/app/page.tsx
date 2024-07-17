@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import AppBar from "./components/appbar";
 import { FaCheckCircle, FaMinusCircle, FaTimesCircle } from "react-icons/fa";
+import { TbArrowLoopRight2 } from "react-icons/tb";
+
 
 function HomePage() {
     const [users, setUsers] = useState<any>([])
@@ -73,47 +75,45 @@ function HomePage() {
                     <li>Kendinizi geliştirmek ve yeni zirvelere ulaşmak için fırsat yakalayın.</li>
                     <li>Liderlik tablosunda yerinizi alarak ödüller ve tanınma kazanın.</li>
                 </ul>
+                <div style={{ textAlign: 'center', lineHeight: '5rem' }}> {/* Iconu yatayda ve dikeyde ortalar */}
+                    <TbArrowLoopRight2 style={{ fontSize: '2rem', display: 'inline-block', verticalAlign: 'middle', transform: 'rotate(90deg)' }} />
+                </div>
                 <button onClick={findGame} className={styles.btn}>Oyun Ara</button>
             </div>
 
-            <div className={styles.rightSection}>
-                {loading && <div className={styles.loading}>Loading...</div>}
-                {error && <div className={styles.error}>Error loading users. Please try again later.</div>}
-                {!loading && !error && (
-                    <div className={styles.pointTable}>
-                        <h1 className={styles.title}>Liderlik Tablosu</h1>
-                        <table className={styles.table}>
-                            <thead>
-                                <tr>
-                                    <th className={styles.td}>User Name</th>
-                                    <th className={styles.td}>Point</th>
-                                    <th className={styles.td}>Total Games</th>
-                                    <th className={styles.td}>Games Won</th>
-                                    <th className={styles.td}>Last 5 Games</th>
+            <div className={styles.rightSection}>                
+                <h1 className={styles.title}>Liderlik Tablosu</h1>
+                <div className={styles.pointTable}>
+                    <table className={styles.table}>
+                        <thead>
+                            <tr>
+                                <th className={styles.td}>User Name</th>
+                                <th className={styles.td}>Point</th>
+                                <th className={styles.td}>Total Games</th>
+                                <th className={styles.td}>Games Won</th>
+                                <th className={styles.td}>Last 5 Games</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map((user, i) => (
+                                <tr key={i}>
+                                    <td className={styles.td}>{user.userName}</td>
+                                    <td className={styles.td}>{user.point}</td>
+                                    <td className={styles.td}>{user.totalGames}</td>
+                                    <td className={styles.td}>{user.gamesWon}</td>
+                                    <td className={styles.td}>
+                                        {user.games.slice(-5).map((game, j) => (
+                                            <span key={j} style={{ marginRight: "5px", display: "inline-block" }}>
+                                                {renderResultIcon(game)}
+                                            </span>
+                                        ))}
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {users.map((user, i) => (
-                                    <tr key={i}>
-                                        <td className={styles.td}>{user.userName}</td>
-                                        <td className={styles.td}>{user.point}</td>
-                                        <td className={styles.td}>{user.totalGames}</td>
-                                        <td className={styles.td}>{user.gamesWon}</td>
-                                        <td className={styles.td}>
-                                            {user.games.slice(-5).map((game, j) => (
-                                                <span key={j} style={{ marginRight: "5px", display: "inline-block" }}>
-                                                    {renderResultIcon(game)}
-                                                </span>
-                                            ))}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
         </div>
     );
 }
@@ -128,7 +128,6 @@ export default function Home() {
         }
 
         fetchUser()
-
     }, [])
 
     return (

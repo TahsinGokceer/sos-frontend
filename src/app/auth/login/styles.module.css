@@ -44,3 +44,12 @@
 .label{
     font-weight: 500;
 }
+
+.minText{
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+.link{
+    color: rgb(77, 16, 208);
+}
