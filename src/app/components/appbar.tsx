@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image";
 import axios from "axios";
 import { IoIosArrowDown, IoIosLogOut } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
@@ -6,7 +7,6 @@ import { BiSolidChess } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import styles from "./appbar.module.css";
 import { useState } from "react";
-
 
 const AppBar = ({ user }) => {
     const router = useRouter()
@@ -25,7 +25,8 @@ const AppBar = ({ user }) => {
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <h1 className={styles.title}>TicTacToe Game</h1>
+            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className={styles.logo} />
+                <h1 className={styles.title}>TicTacToe</h1>
                 <ul>
                     <li>
                         <Link href="/">Home</Link>

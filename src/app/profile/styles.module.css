@@ -1,7 +1,7 @@
 .mainContainer{
-    background: linear-gradient(90deg, rgba(104,59,133,1) 0%, rgba(77,61,142,1) 50%, rgba(51,103,173,1) 100%);
+    background-image: url("/images/wallpaper.jpg");
     width: 100vw;
-    height: 90.2vh;
+    height: 90vh;
     padding: 3rem 0;
     margin: 0;
     color: whitesmoke;
@@ -17,12 +17,17 @@
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
-    height: 400px;
-    width: 50%;
+    height: 450px;
+    width: 55%;
     font-size: 1.2rem;
     font-weight: 600;
     padding: 3rem 0;
     margin: auto;
+    color: #83EEFF;
+}
+
+.label{
+    margin-bottom: -2.5rem;
 }
 
 .title{
@@ -30,48 +35,61 @@
     font-weight: bold;
     margin: 0;
     text-align: center;
+    color: #83EEFF;
 }
 
 .icon{    
     font-size: .9rem;
-    margin: 0 .9rem;
+    margin: 0 2rem;
 }
 
 .input{
-    padding: 8px;
+    padding: 8px 15px;
     font-size: 1rem;
-    color: #000;
+    color: #FF10F0;
+    border: 1px solid #ddd; 
+    border-radius: 4px;
 }
 
-.input:last-of-type{
-    margin-right: 1rem;
+.input1{
+    padding: 8px 15px;
+    font-size: 1rem;
+    color: #FF10F0;
+    border: 1px solid #ddd; 
+    border-radius: 4px;
+    margin-right: 5.1rem;
 }
 
 .input::placeholder{
-    color: #666;
+    color: #ccc;
 }
 
+.input1::placeholder{
+    color: #ccc;
+}
 
 .btn{
-    border: 1px solid #000;
+    border: 1px solid #fff;
     border-radius: 7px;
     padding: 10px 20px;
     font-size: 1rem;
+    width: 50%;
+    margin-bottom: -1rem;
 }
 
 .updateBtn{
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    padding: 8px 16px;
     font-size: .8rem;   
 }
 
 .span{
     font-size: 0.8rem;
-    color: rgb(253, 42, 42);
+    color: #FF10F0;
 }
 
 .spanSuccess{
     font-size: 0.9rem;
-    color: rgb(25, 139, 25);
+    color: #83EEFF;
 }

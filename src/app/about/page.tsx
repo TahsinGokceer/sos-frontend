@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styless from "./styles.module.css"
 import AppBar from "../components/appbar"
 
 function About() {
@@ -17,8 +16,10 @@ function About() {
     }, [])
 
     return (
-        <div>
-            <AppBar user={loginUser} />            
+        <div style={styles.background}>
+            <div style={styles.appBarContainer}>
+                <AppBar user={loginUser} />
+            </div>          
             <div style={styles.container}>
                 <h1 style={styles.title}>About Us</h1>
                 <p style={styles.text}>
@@ -40,7 +41,23 @@ function About() {
 }
 
 const styles = {
-    
+    background: {
+        backgroundImage: 'url("/images/wallpaper.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        paddingTop: '70px', // AppBar height + padding
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        paddingBottom: '20px'
+    },
+    appBarContainer: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000
+    },    
     container: {
         padding: '40px 20px',
         backgroundColor: '#f9f9f9',
@@ -73,4 +90,3 @@ const styles = {
 };
 
 export default About;
-

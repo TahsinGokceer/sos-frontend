@@ -16,12 +16,13 @@ function Contact() {
         fetchUser()
     }, [])
 
-
     return (
-        <div>
-            <AppBar user={loginUser} />
-            <h1 style={styles.title}>Contact Us</h1>
+        <div style={styles.background}>
+            <div style={styles.appBarContainer}>
+                <AppBar user={loginUser} />
+            </div>
             <div style={styles.container}>
+            <h1 style={styles.title}>Contact Us</h1>
                 <p>If you have any questions, feedback, or suggestions, feel free to reach out to us. We'd love to hear from you!</p>
                 <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <input
@@ -68,16 +69,32 @@ function Contact() {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
 
 const styles = {
+    background: {
+        backgroundImage: 'url("/images/wallpaper.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        paddingTop: '70px', // AppBar height + padding
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        paddingBottom: '20px'
+    },
+    appBarContainer: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000
+    },
     container: {
         padding: '20px',
         textAlign: 'center',
-        backgroundColor: '#f1f1f1',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         borderRadius: '8px',
         maxWidth: '500px',
         margin: 'auto',
@@ -114,9 +131,8 @@ const styles = {
     title: {
         textAlign: "center",
         fontSize: "2rem",
-        marginTop: "1rem"
+        // marginTop: "1rem"
     }
 };
-
 
 export default Contact;

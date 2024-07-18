@@ -1,7 +1,7 @@
 .mainContainer{
-    background-image: url("https://r.resimlink.com/FyAGY.jpg");
+    background-image: url("/images/wallpaper.jpg");
     width: 100vw;
-    height: 90.2vh;
+    height: 90vh;
     padding: 3rem 0;
     margin: 0;
     color: whitesmoke;
@@ -51,6 +51,8 @@
     align-items: center;
 }
 
-.p {
+.text {
+    font-size: 1.3rem;
     text-align: center;
+    line-height: 2.5rem;
 }

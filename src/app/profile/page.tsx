@@ -95,7 +95,7 @@ function Profile() {
                             successMessage && <span className={styles.spanSuccess}>*Update Successful</span>
                         }
 
-                        <label>Username</label>
+                        <label className={styles.label}>Username</label>
                         <div>
                             <input className={styles.input} type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder={loginUser && loginUser.userName} disabled={isUsernameInputDisable} />
                             <button onClick={handleUsername}><HiPencilSquare className={styles.icon} /></button>
@@ -107,7 +107,7 @@ function Profile() {
                             userNameSpan && <span className={styles.span}>*This username is already taken</span>
                         }
 
-                        <label>Email</label>
+                        <label className={styles.label}>Email</label>
                         <div>
                             <input className={styles.input} type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={loginUser && loginUser.email} disabled={isEmailInputDisable} />
                             <button onClick={handleEmail}><HiPencilSquare className={styles.icon} /></button>
@@ -123,15 +123,13 @@ function Profile() {
                         {
                             isShow &&
                             <div>
-                                <input className={styles.input} type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="change password" />
+                                <input className={styles.input1} type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="change password" />
                                 <button onClick={updateUser} className={styles.updateBtn}>Update</button>
                             </div>
                         }
                     </div>
                 </div>
             </div>
-
-
         </div>
     )
 }

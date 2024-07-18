@@ -36,11 +36,11 @@ function Mygames() {
                         Hadi, şimdi oyuna geri dön ve başarını katla!
                     </p>
                     <div className={styles.infoLabel}>
-                        <p>Total Games <br /> {loginUser && loginUser.totalGames}</p>
-                        <p>Win <br /> {loginUser && loginUser.gamesWon}</p>
-                        <p>Draw <br /> {loginUser && loginUser.totalGames - (loginUser.gamesWon + loginUser.gamesLost)}</p>
-                        <p>Lost <br /> {loginUser && loginUser.gamesLost}</p>
-                        <p>Point <br /> {loginUser && loginUser.point}</p>
+                        <p className={styles.text}>Total Games <br /> {loginUser && loginUser.totalGames}</p>
+                        <p className={styles.text}>Win <br /> {loginUser && loginUser.gamesWon}</p>
+                        <p className={styles.text}>Draw <br /> {loginUser && loginUser.totalGames - (loginUser.gamesWon + loginUser.gamesLost)}</p>
+                        <p className={styles.text}>Lost <br /> {loginUser && loginUser.gamesLost}</p>
+                        <p className={styles.text}>Point <br /> {loginUser && loginUser.point}</p>
                     </div>
                     <h4 className={styles.minTitle}>Son 5 oyun durumun:</h4>
                 </div>
