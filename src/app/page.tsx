@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import AppBar from "./components/appbar";
 import { FaCheckCircle, FaMinusCircle, FaTimesCircle } from "react-icons/fa";
-import { TbArrowLoopRight2 } from "react-icons/tb";
+// import { TbArrowLoopRight2 } from "react-icons/tb";
 
 
 function HomePage() {
@@ -41,19 +41,19 @@ function HomePage() {
         fetchUsers();
     }, []);
 
-    const findGame = async () => {
-        const response = await axios.get("http://localhost:3001/game/find", { withCredentials: true })
-        console.log(response.data.user);
-    }
+    // const findGame = async () => {
+    //     const response = await axios.get("http://localhost:3001/game/find", { withCredentials: true })
+    //     console.log(response.data.user);
+    // }
 
     const renderResultIcon = (result) => {
         switch (result) { // Handle case-insensitive results
             case 'Win':
-                return <FaCheckCircle style={{ color: 'green' }} />;
+                return <FaCheckCircle style={{ color: 'rgba(75, 192, 192, 0.8)' }} />;
             case 'Draw':
-                return <FaMinusCircle style={{ color: 'yellow' }} />;
+                return <FaMinusCircle style={{ color: 'rgba(255, 206, 86, 0.8)' }} />;
             case 'Lose':
-                return <FaTimesCircle style={{ color: 'red' }} />;
+                return <FaTimesCircle style={{ color: 'rgba(255, 99, 132, 0.8)' }} />;
             default:
                 return result; // Display the raw result if not recognized
         }
@@ -75,10 +75,10 @@ function HomePage() {
                     <li>Kendinizi geliştirmek ve yeni zirvelere ulaşmak için fırsat yakalayın.</li>
                     <li>Liderlik tablosunda yerinizi alarak ödüller ve tanınma kazanın.</li>
                 </ul>
-                <div style={{ textAlign: 'center', lineHeight: '5rem' }}> {/* Iconu yatayda ve dikeyde ortalar */}
+                {/* <div style={{ textAlign: 'center', lineHeight: '5rem' }}> 
                     <TbArrowLoopRight2 style={{ fontSize: '2rem', display: 'inline-block', verticalAlign: 'middle', transform: 'rotate(90deg)' }} />
                 </div>
-                <button onClick={findGame} className={styles.btn}>Oyun Ara</button>
+                <button onClick={findGame} className={styles.btn}>Oyun Ara</button> */}
             </div>
 
             <div className={styles.rightSection}>                

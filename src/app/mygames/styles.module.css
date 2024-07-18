@@ -1,4 +1,4 @@
-.mainContainer{
+.mainContainer {
     background-image: url("/images/wallpaper.jpg");
     width: 100vw;
     height: 90vh;
@@ -13,33 +13,33 @@
     height: 0;
 }
 
-.container{
+.container {
     width: 70%;
     margin: 0 auto;
 }
 
-.title{
+.container p {
+    margin-bottom: 1rem;
+}
+
+.container p:last-of-type {
+    margin-top: 0;
+}
+
+.title {
     font-size: 3.4rem;
     font-weight: bold;
-    margin: 0;
+    margin-bottom: 1rem;
 }
 
-.infoLabel{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 3rem 0;
-}
-
-.minTitle{
+.minTitle {
     margin-bottom: 2rem;
     font-size: 1.3rem;
     font-weight: 600;
+    margin-top: 50px;
 }
 
-.link{
+.link {
     font-weight: bold;
 }
 
@@ -49,10 +49,21 @@
     margin: 0 auto;
     justify-content: space-around;
     align-items: center;
+    margin-top: 10px;
 }
 
 .text {
     font-size: 1.3rem;
     text-align: center;
     line-height: 2.5rem;
+}
+
+.chartsContainer {
+    width: 50vw;
+    height: 45vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    gap: 40px;
 }

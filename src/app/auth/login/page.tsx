@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [emailSpan, setEmailSpan] = useState(true)
-    const [passwordSpan, setPasswordSpan] = useState(true)
+    const [emailSpan, setEmailSpan] = useState(false)
+    const [passwordSpan, setPasswordSpan] = useState(false)
 
     const router = useRouter()
 

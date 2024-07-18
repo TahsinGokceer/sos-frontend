@@ -4,8 +4,9 @@ import axios from "axios";
 import Link from "next/link"
 import AppBar from "../components/appbar"
 import GameCard from "../components/GameCard/GameCard";
+import BarChart from "../components/BarChart/barChart";
+import PieChart from "../components/PieChart/pieChart";
 import styles from "./styles.module.css"
-
 
 function Mygames() {
     const [loginUser, setLoginUser] = useState();
@@ -28,31 +29,35 @@ function Mygames() {
             <div className={styles.mainContainer}>
                 <div className={styles.container}>
                     <h1 className={styles.title}>{loginUser && loginUser.userName}</h1>
-                    <p>
-                        Lider tablolarında en üst sıralara tırmanmak için olan mücadelendeki tüm istatistiklerin burada! <br />
-                        İstatistiklerini daha da geliştirmek ister misin? <br />
-                        Farklı zorluk seviyelerinde kendini test et ve skorunu artırmak için mücadeleye katıl! <br />
-                        Ayrıca, yaklaşan turnuvalarda yer alarak en iyiler arasında olma şansını daha da artırabilirsin. <br />
-                        Hadi, şimdi oyuna geri dön ve başarını katla!
-                    </p>
-                    <div className={styles.infoLabel}>
-                        <p className={styles.text}>Total Games <br /> {loginUser && loginUser.totalGames}</p>
-                        <p className={styles.text}>Win <br /> {loginUser && loginUser.gamesWon}</p>
-                        <p className={styles.text}>Draw <br /> {loginUser && loginUser.totalGames - (loginUser.gamesWon + loginUser.gamesLost)}</p>
-                        <p className={styles.text}>Lost <br /> {loginUser && loginUser.gamesLost}</p>
-                        <p className={styles.text}>Point <br /> {loginUser && loginUser.point}</p>
+                    <p>Lider tablolarında en üst sıralara tırmanmak için olan mücadelendeki tüm istatistiklerin burada! </p>
+                    <p>İstatistiklerini daha da geliştirmek ister misin? </p>
+                    <p>Farklı zorluk seviyelerinde kendini test et ve skorunu artırmak için mücadeleye katıl! </p>
+                    <p>Ayrıca, yaklaşan turnuvalarda yer alarak en iyiler arasında olma şansını daha da artırabilirsin. </p>
+                    <p>Hadi, şimdi oyuna geri dön ve başarını katla! </p>
+                    <h4 className={styles.minTitle}>İstatistiklerin</h4>
+                    <div className={styles.chartsContainer}>
+                        {loginUser && (
+                            <>
+                                <BarChart data={{
+                                    gamesWon: (loginUser && loginUser.gamesWon),
+                                    gamesDraw: (loginUser && loginUser.gamesDraw),
+                                    gamesLost: (loginUser && loginUser.gamesLost),
+                                }} />
+                                <PieChart data={{
+                                    gamesWon: (loginUser && loginUser.gamesWon),
+                                    totalGames: (loginUser && loginUser.totalGames),
+                                }} />
+                            </>
+                        )}
                     </div>
                     <h4 className={styles.minTitle}>Son 5 oyun durumun:</h4>
-                </div>
-
-                <div className={styles.gamesContainer}>
-                    {
-                        lastGames.length == 0 ? (<p>Herhangi bir oyun oynamadınız. Hemen <Link className={styles.link} href="/">ana sayfaya</Link> dönüp bir oyun oynayabilirsiniz</p>) : (lastGames.map(lastGame => <GameCard game={lastGame} />))
-                    }
+                    <div className={styles.gamesContainer}>
+                        {
+                            lastGames.length == 0 ? (<p>Herhangi bir oyun oynamadınız. Hemen <Link className={styles.link} href="/">ana sayfaya</Link> dönüp bir oyun oynayabilirsiniz</p>) : (lastGames.map(lastGame => <GameCard game={lastGame} />))
+                        }
+                    </div>
                 </div>
             </div>
-
-
         </div>
     )
 }

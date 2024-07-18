@@ -51,10 +51,12 @@
     font-size: 3rem;
     font-weight: bold;
     margin: 0 auto 3rem auto;
+    color: #83EEFF;
 }
 
 .label{
     font-weight: 500;
+    color: #83EEFF;
 }
 
 .minText{
@@ -68,7 +70,8 @@
 
 .span{
     font-size: 0.8rem;
-    color: rgb(255, 62, 62);
+    /* color: rgb(255, 62, 62); */
+    color: #FF10F0;
     margin-top: -1.5rem;
     margin-bottom: 1rem;
 }
@@ -77,5 +80,6 @@
     font-size: 0.9rem;
     margin-top: -1.5rem;
     margin-bottom: 1rem;
-    color: rgb(19, 187, 19);
+    /* color: rgb(19, 187, 19); */
+    color: #83EEFF;
 }

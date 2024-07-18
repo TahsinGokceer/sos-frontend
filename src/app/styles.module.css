@@ -1,20 +1,18 @@
 .container {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 90vh;
     display: flex;
-    background-image: url("/images/wallpaper.jpg");
+    justify-content: center;
+    background-image: url("/images/homepage.jpeg");
     background-blend-mode: multiply, multiply;
     overflow: hidden;
-    align-items: flex-start; 
 }
 
 .leftSection {
-    flex: 1.5;
-    padding: 2rem;
+    flex: 2;
+    padding: 3rem 0 0 3rem;
     position: sticky;
     top: 0;
-    height: 100vh;
-    /* overflow-y: auto; */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -22,77 +20,45 @@
 
 .rightSection {
     flex: 2;
-    padding: 2rem;
+    padding: 3rem ;
     color: white;
     top: 0;
 }
 
-.userlist {
-    /* ... */
-}
-
 .pointTable {
-    padding: 5px;
-    margin: 3% 7%;
     min-height: 250px;
-    max-height: 75vh;
-    /* Tabloya maksimum yükseklik verin */
+    max-height: 65vh;
     overflow-y: auto;
 }
 
 .pointTable::-webkit-scrollbar {
     width: 0;
     height: 0;
-  }
-
-.td {
-    margin: 0 3rem;
-
 }
 
 .pointTable thead {
     overflow-y: hidden;
     position: sticky;
     top: 0;
-    /* z-index: 3; */
-    width: 100;
-    /* background-image: linear-gradient(to right, #7ac5d8 0%, #b49fda 19%, #57c6e1 42%, #bbc1bf 79%, #eea2a2 100%); */
+    width: 100%;
     background-color: black;
     color: white;
     font-weight: bold;
-    
 }
 
 .pointTable th {
     background-color: inherit;
-
 }
 
 .pointTable th,
-.pointTable td {   
-    text-align: center;    
-    padding: 10px;
-    
-}
-
-.pointTable th:first-child {
-    width: 20%;
-}
-
-.pointTable th:nth-child(2) {
-    width: 20%;
-}
-
-.pointTable th:nth-child(3) {
-    width: 20%;
-}
-
-.pointTable th:nth-child(4) {
+.pointTable td {
+    text-align: center;
+    padding: 1rem;
     width: 20%;
 }
 
 .pointTable th:nth-child(5) {
-    width: 50%;
+    width: 40%;
 }
 
 .pointTable tbody tr:nth-child(even) {
@@ -109,11 +75,9 @@
 
 .pointTable tbody tr {
     line-height: 3;
-    /* border: 1px solid white; */
 }
 
 .btn {
-    /* border: 2px dotted #fff; */
     border-radius: 5px;
     padding: 15px 20px;
     font-family: Arial, sans-serif;
@@ -130,114 +94,23 @@
 
 .container h1 {
     text-align: center;
-    /* Metni yatayda ortala */
     font-weight: bold;
     font-size: 1.5rem;
     font-family: 'Times New Roman', sans-serif;
-    /* Specify the font family */
     margin-bottom: 1.5rem;
     color: #FF10F0;
 }
 
 .leftSection p {
     text-align: center;
-    /* Metni iki yana yaslar */
     line-height: 3;
-    /* Satır aralarını genişletir */
 }
 
 .leftSection ul {
     text-align: center;
     line-height: 3;
-    /* Liste elemanları arasındaki boşluğu artırır */
 }
 
 .leftSection li {
     margin-bottom: 2;
-    /* Liste elemanları arasına ekstra boşluk ekler */
 }
-
-
-
-
-
-
-
-
-
-
-/*
-
-.container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    background: linear-gradient(45deg, #2c3e50 0%, #bdc3c7 100%);;
-    background-blend-mode: multiply, multiply;
-    color: whitesmoke;
-}
-
-.leftSection {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 2; 
-    padding: 3rem;    
-}
-
-.leftSection *{
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-.rightSection {
-    flex: 2;
-    padding: 2rem;
-}
-
-.pointTable {
-    margin: 3% 7%;
-    min-height: 250px;
-}
-
-.pointTable thead {
-    position: sticky;
-    top: 0;
-    background-color: #EDF1F4;
-}
-
-.pointTable th {
-    color: #000;
-    background-color: inherit;
-    width: 20%;
-}
-
-.pointTable tbody tr {
-    line-height: 3;
-}
-
-.pointTable tbody td{
-    text-align: center;
-}
-
-.btn {
-    border: 1px solid #000;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 0.7rem 1rem;
-    width: 25%;
-}
-
-.btn:hover{
-    color: white;
-    background-color: #000;
-}
-
-*/

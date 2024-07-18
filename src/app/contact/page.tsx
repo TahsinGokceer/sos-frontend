@@ -22,7 +22,7 @@ function Contact() {
                 <AppBar user={loginUser} />
             </div>
             <div style={styles.container}>
-            <h1 style={styles.title}>Contact Us</h1>
+                <h1 style={styles.title}>Contact Us</h1>
                 <p>If you have any questions, feedback, or suggestions, feel free to reach out to us. We'd love to hear from you!</p>
                 <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <input
@@ -46,7 +46,7 @@ function Contact() {
                     >
                         Send Message
                     </button>
-                </form>            
+                </form>
                 <div style={styles.info}>
                     <div style={styles.item}>
                         <FaPhone style={styles.icon} />
