@@ -11,7 +11,7 @@ import { useState, useRef, useEffect } from "react";
 const AppBar = ({ user }: { user: any }) => {
     const router = useRouter()
     const [isShow, setIsShow] = useState(false)
-    const menuRef = useRef(null);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -23,8 +23,8 @@ const AppBar = ({ user }: { user: any }) => {
         setIsShow(!isShow)
     }
 
-    const handleClickOutside = (event: React.MouseEvent<HTMLButtonElement>) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+        if (menuRef.current && event.target instanceof Node && !menuRef.current.contains(event.target)) {
             setIsShow(false);
         }
     };
@@ -69,7 +69,7 @@ const AppBar = ({ user }: { user: any }) => {
                                     <Link className={styles.link} href="/mygames">{<BiSolidChess className={styles.icon2} />} My Games</Link>
                                 </li>
                                 <li>
-                                    <Link className={styles.link} onClick={handleClick} href="/auth/login">{<IoIosLogOut className={styles.icon2} />} Logout</Link>
+                                    <Link className={styles.link} onClick={e => handleClick} href="/auth/login">{<IoIosLogOut className={styles.icon2} />} Logout</Link>
                                 </li>
                             </ul>
                         </div>
