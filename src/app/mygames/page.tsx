@@ -44,26 +44,32 @@ function Mygames() {
                     <p>Ayrıca, yaklaşan turnuvalarda yer alarak en iyiler arasında olma şansını daha da artırabilirsin. </p>
                     <p>Hadi, şimdi oyuna geri dön ve başarını katla! </p>
                     <h4 className={styles.minTitle}>İstatistiklerin</h4>
-                    <div className={styles.chartsContainer}>
-                        {loginUser && (
-                            <>
+                    {loginUser && lastGames.length > 0 ? (
+                        <>                            
+                            <div className={styles.chartsContainer}>
                                 <BarChart data={{
-                                    gamesWon: (loginUser && loginUser.gamesWon),
-                                    gamesDraw: (loginUser && loginUser.gamesDraw),
-                                    gamesLost: (loginUser && loginUser.gamesLost),
+                                    gamesWon: loginUser.gamesWon,
+                                    gamesDraw: loginUser.gamesDraw,
+                                    gamesLost: loginUser.gamesLost,
                                 }} />
                                 <PieChart data={{
-                                    gamesWon: (loginUser && loginUser.gamesWon),
-                                    totalGames: (loginUser && loginUser.totalGames),
+                                    gamesWon: loginUser.gamesWon,
+                                    totalGames: loginUser.totalGames,
                                 }} />
-                            </>
-                        )}
-                    </div>
+                            </div>
+                        </>
+                    ) : (                        
+                        <p className={styles.noGamesMessage}>Herhangi bir oyun oynamadığınız için henüz istatiğiniz yok.</p>
+                    )}
                     <h4 className={styles.minTitle}>Son 5 oyun durumun:</h4>
-                    <div className={styles.gamesContainer}>
-                        {
-                            lastGames.length == 0 ? (<p>Herhangi bir oyun oynamadınız. Hemen <Link className={styles.link} href="/">ana sayfaya</Link> dönüp bir oyun oynayabilirsiniz</p>) : (lastGames.map((lastGame, i) => <GameCard key={i} game={lastGame} />))
-                        }
+                    <div className={styles.gamesWrapper}>
+                        {lastGames.length === 0 ? (
+                            <p className={styles.noGamesMessage}>Herhangi bir oyun oynamadınız. Uygulamamızı ziyaret ederek hemen oynamaya başlayabilirsiniz.</p>
+                        ) : (
+                            <div className={styles.gamesContainer}>
+                                {lastGames.map(lastGame => <GameCard key={lastGame._id} game={lastGame} />)}
+                            </div>
+                        )}
                     </div>
                     <h4 className={styles.minTitle}>Katıldığın Turnuvalar</h4>
                     <div className={styles.tournamentsContainer}>
@@ -80,7 +86,7 @@ function Mygames() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {tournaments.map((tournament) => (
+                                    {tournaments.map(tournament => (
                                         <tr key={tournament._id}>
                                             <td>{tournament.TournamentType}</td>
                                             <td>{tournament.maxPlayer}</td>
