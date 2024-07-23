@@ -23,7 +23,7 @@ function Contact() {
             </div>
             <div style={styles.container}>
                 <h1 style={styles.title}>Contact Us</h1>
-                <p>If you have any questions, feedback, or suggestions, feel free to reach out to us. We'd love to hear from you!</p>
+                <p>If you have any questions, feedback, or suggestions, feel free to reach out to us. We would love to hear from you!</p>
                 <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <input
                         type="text"

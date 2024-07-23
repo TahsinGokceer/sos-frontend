@@ -62,7 +62,7 @@ function Mygames() {
                     <h4 className={styles.minTitle}>Son 5 oyun durumun:</h4>
                     <div className={styles.gamesContainer}>
                         {
-                            lastGames.length == 0 ? (<p>Herhangi bir oyun oynamadınız. Hemen <Link className={styles.link} href="/">ana sayfaya</Link> dönüp bir oyun oynayabilirsiniz</p>) : (lastGames.map(lastGame => <GameCard game={lastGame} />))
+                            lastGames.length == 0 ? (<p>Herhangi bir oyun oynamadınız. Hemen <Link className={styles.link} href="/">ana sayfaya</Link> dönüp bir oyun oynayabilirsiniz</p>) : (lastGames.map((lastGame, i) => <GameCard key={i} game={lastGame} />))
                         }
                     </div>
                     <h4 className={styles.minTitle}>Katıldığın Turnuvalar</h4>
