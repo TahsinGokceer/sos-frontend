@@ -11,13 +11,22 @@ import styles from "./styles.module.css"
 function Mygames() {
     const [loginUser, setLoginUser] = useState();
     const [lastGames, setLastGames] = useState([])
+    const [tournaments, setTournaments] = useState([]);
+
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await axios.get("http://localhost:3001/page/home", { withCredentials: true })
-            console.log(response.data.loginUser);
-            setLoginUser(response.data.loginUser)
-            setLastGames(response.data.loginUser.games.slice(-5).reverse())
+            try {
+                const response = await axios.get("https://sos-backend-4a2p.onrender.com/page/home", { withCredentials: true });
+                setLoginUser(response.data.loginUser);
+                setLastGames(response.data.loginUser.games.slice(-5).reverse());
+
+                const userId = response.data.loginUser._id; // Kullanıcı ID'sini alın                
+                const tournamentResponse = await axios.get(`https://sos-backend-4a2p.onrender.com/tournament/userTournaments/${userId}`, { withCredentials: true });
+                setTournaments(tournamentResponse.data.userTournaments);
+            } catch (error) {
+                console.error("Error fetching user or tournaments:", error);
+            }
         }
 
         fetchUser()
@@ -55,6 +64,33 @@ function Mygames() {
                         {
                             lastGames.length == 0 ? (<p>Herhangi bir oyun oynamadınız. Hemen <Link className={styles.link} href="/">ana sayfaya</Link> dönüp bir oyun oynayabilirsiniz</p>) : (lastGames.map(lastGame => <GameCard game={lastGame} />))
                         }
+                    </div>
+                    <h4 className={styles.minTitle}>Katıldığın Turnuvalar</h4>
+                    <div className={styles.tournamentsContainer}>
+                        {tournaments.length === 0 ? (
+                            <p>Herhangi bir turnuvaya katılmadınız.</p>
+                        ) : (
+                            <table className={styles.tournamentTable}>
+                                <thead>
+                                    <tr>
+                                        <th>Turnuva Tipi</th>
+                                        <th>Oyuncu Sayısı</th>
+                                        <th>Aktiflik</th>
+                                        <th>Sıralamanız</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tournaments.map(tournament => (
+                                        <tr key={tournament._id}>
+                                            <td>{tournament.TournamentType}</td>
+                                            <td>{tournament.maxPlayer}</td>
+                                            <td>{tournament.ActiveTournament ? "Devam ediyor." : "Sona erdi."}</td>
+                                            <td>{tournament.ranking !== null ? tournament.ranking : "Sıralama yok."}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        )}
                     </div>
                 </div>
             </div>

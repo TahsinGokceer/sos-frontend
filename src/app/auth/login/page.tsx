@@ -16,12 +16,20 @@ export default function Login() {
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
-        try {
-            const response = await axios.post("http://localhost:3001/user/login", { email, password }, { withCredentials: true });
+        // const sil = "https://sos-backend-4a2p.onrender.com"
+        // const sil2 = "http://localhost:3001"
 
+        try {
+            const response = await axios.post("https://sos-backend-4a2p.onrender.com/user/login", { email, password }, { withCredentials: true });
+            
+            
             if (response.data.success) {
+                console.log("Giriş başarılı");
+                
                 router.push('/');
             } else {
+                console.log("Bir şeyler yanlış");
+                
                 if(response.data.message === "Email"){
                     setEmailSpan(true)
                     setTimeout(() => {

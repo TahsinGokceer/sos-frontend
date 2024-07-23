@@ -15,7 +15,7 @@ const AppBar = ({ user }) => {
 
     const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        await axios.get("http://localhost:3001/user/logout", { withCredentials: true })
+        await axios.get("https://sos-backend-4a2p.onrender.com/user/logout", { withCredentials: true })
         router.push("/auth/login")
     }
 

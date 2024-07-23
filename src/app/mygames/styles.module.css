@@ -67,3 +67,48 @@
     margin-top: 10px;
     gap: 40px;
 }
+
+.tournamentTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tournamentTable th,
+.tournamentTable td {
+    padding: 12px;
+    text-align: center;
+}
+
+.tournamentTable thead tr {
+    background-color: transparent;
+    color: white;
+    border-bottom: 1px solid #ddd; /* Satır altına sınır */
+}
+
+.tournamentTable thead th {
+    background-color: transparent;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd; /* Satır altına sınır */
+}
+
+.tournamentTable tbody tr:nth-child(even) {   
+    color: rgba(75, 192, 192, 1);
+    font-weight: bold;
+}
+
+.tournamentTable tbody tr:nth-child(odd) {
+    background-color: #ddd;
+    color: rgba(255, 99, 132, 1);
+    font-weight: bold;
+}
+
+.tournamentTable tbody tr:nth-child(even):hover {
+    background-color: #ddd; /* hover rengini değiştirerek daha iyi görünüm sağlanabilir */
+}
+
+.tournamentTable td {
+    border-bottom: 1px solid #ddd; /* Sadece td elementleri için sınır */
+}

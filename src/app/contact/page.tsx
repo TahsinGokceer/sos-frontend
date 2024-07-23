@@ -9,7 +9,7 @@ function Contact() {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await axios.get("http://localhost:3001/page/home", { withCredentials: true })
+            const response = await axios.get("https://sos-backend-4a2p.onrender.com/page/home", { withCredentials: true })
             setLoginUser(response.data.loginUser)
         }
 

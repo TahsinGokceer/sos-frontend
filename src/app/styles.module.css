@@ -2,38 +2,19 @@
     width: 100vw;
     height: 90vh;
     display: flex;
-    justify-content: center;
-    background-image: url("/images/homepage.jpeg");
+    justify-content: flex-start;
+    background-image: url("/images/wallpaper.jpg");
     background-blend-mode: multiply, multiply;
-    overflow: hidden;
+    overflow: hidden;    
+    flex-direction: column;
+    
 }
-
-.leftSection {
-    flex: 2;
-    padding: 3rem 0 0 3rem;
-    position: sticky;
-    top: 0;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-}
-
-.rightSection {
-    flex: 2;
-    padding: 3rem ;
-    color: white;
-    top: 0;
-}
-
-.pointTable {
-    min-height: 250px;
-    max-height: 65vh;
-    overflow-y: auto;
-}
-
-.pointTable::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+.pointTable {   
+    max-height: 75vh;
+    border-collapse: collapse;    
+    margin-left: 60px;
+    margin-right: 60px;
+    overflow-y: auto;    
 }
 
 .pointTable thead {
@@ -41,76 +22,113 @@
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: black;
-    color: white;
+    background-color: rgba(221, 221, 221);
     font-weight: bold;
+    line-height: 3;
 }
 
-.pointTable th {
-    background-color: inherit;
+.pointTable::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .pointTable th,
-.pointTable td {
+.pointTable td {    
     text-align: center;
     padding: 1rem;
     width: 20%;
 }
 
-.pointTable th:nth-child(5) {
-    width: 40%;
+.pointTable thead tr {
+    background-color: transparent;    
+}
+
+.pointTable thead th {
+    background-color: transparent;
+    color: black;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    
+}
+
+.pointTable tbody tr:nth-child(odd) {   
+    color: rgba(75, 192, 192, 1);
+    font-weight: bold;
 }
 
 .pointTable tbody tr:nth-child(even) {
-    background: transparent;
-    color: #83EEFF;
+    background-color: rgba(221, 221, 221, 0.3);
+    color: rgba(255, 99, 132, 1);
     font-weight: bold;
 }
 
-.pointTable tbody tr:nth-child(odd) {
-    background: transparent;
-    color: #FF10F0;
-    font-weight: bold;
+.pointTabletbody tr:nth-child(even):hover {
+    background-color: #ddd; /* hover rengini değiştirerek daha iyi görünüm sağlanabilir */
 }
 
 .pointTable tbody tr {
     line-height: 3;
 }
 
-.btn {
-    border-radius: 5px;
-    padding: 15px 20px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    background: #FF10F0;
-    color: white;
-    box-shadow: 0 2px 3px #888888;
-}
-
-.btn:hover {
-    background: #00d6f7
-}
-
-.container h1 {
+.title {
     text-align: center;
     font-weight: bold;
     font-size: 1.5rem;
-    font-family: 'Times New Roman', sans-serif;
-    margin-bottom: 1.5rem;
-    color: #FF10F0;
+    font-family: 'Times New Roman', sans-serif;    
+    color: rgba(75, 192, 192, 1);
+    margin-bottom: 30px;  
+    margin-top: 30px;
+    letter-spacing: 0.15em;
+    word-spacing: 0.3em;
 }
 
-.leftSection p {
-    text-align: center;
-    line-height: 3;
+.pointTable th:nth-child(1),
+.pointTable td:nth-child(1) {
+    width: 5%; /* Adjust width for the first column */
 }
 
-.leftSection ul {
-    text-align: center;
-    line-height: 3;
+.pointTable th:nth-child(2),
+.pointTable td:nth-child(2) {
+    width: 10%; /* Adjust width for the second column */
 }
 
-.leftSection li {
-    margin-bottom: 2;
+/* Add widths for other columns as needed */
+.pointTable th:nth-child(3),
+.pointTable td:nth-child(3) {
+    width: 15%; /* Example width for the third column */
+}
+.pointTable th:nth-child(4),
+.pointTable td:nth-child(4) {
+    width: 15%; /* Adjust width for the first column */
+}
+
+.pointTable th:nth-child(5),
+.pointTable td:nth-child(5) {
+    width: 15%; /* Adjust width for the second column */
+}
+
+/* Add widths for other columns as needed */
+.pointTable th:nth-child(6),
+.pointTable td:nth-child(6) {
+    width: 15%; /* Example width for the third column */
+}
+
+.pointTable th:nth-child(7),
+.pointTable td:nth-child(7) {
+    width: 5%; /* Adjust width for the first column */
+}
+
+.pointTable th:nth-child(8),
+.pointTable td:nth-child(8) {
+    width: 5%; /* Adjust width for the second column */
+}
+
+/* Add widths for other columns as needed */
+.pointTable th:nth-child(9),
+.pointTable td:nth-child(9) {
+    width: 5%; /* Example width for the third column */
+}
+
+.highlightRow {
+    background-color: #ddd !important; /* Vurgulamak için seçilen renk */
 }

@@ -18,7 +18,7 @@ function Register() {
         e.preventDefault()
 
         try {
-            const response = await axios.post("http://localhost:3001/user/register", { userName, email, password }, { withCredentials: true });
+            const response = await axios.post("https://sos-backend-4a2p.onrender.com/user/register", { userName, email, password }, { withCredentials: true });
 
             if (response.data.success) {
                 setSuccessMessage(true)

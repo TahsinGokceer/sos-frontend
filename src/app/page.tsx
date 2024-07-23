@@ -1,34 +1,32 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import AppBar from "./components/appbar";
 import { FaCheckCircle, FaMinusCircle, FaTimesCircle } from "react-icons/fa";
-// import { TbArrowLoopRight2 } from "react-icons/tb";
 
-
-function HomePage() {
+function HomePage({ loginUser }) {
     const [users, setUsers] = useState<any>([])
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const router = useRouter()
+    const tableRef = useRef(null);
+    const headerRef = useRef(null);
 
     useEffect(() => {
-        const loginUserControl = async () => {
-            const response = await axios.get("http://localhost:3001/page/home", { withCredentials: true })
-
-            if (response.data.loginUser === null) {
-                router.push("/auth/login")
-            }
-        }
-
         const fetchUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:3001/user/getAllUser");  // , { userName, email, password }, { withCredentials: true }                
+                const response = await axios.get("https://sos-backend-4a2p.onrender.com/user/getAllUser", { withCredentials: true });  // , { userName, email, password }, { withCredentials: true }                
                 response.data.allUsers.sort((a: { point: number }, b: { point: number }) => b.point - a.point);
 
-                setUsers(response.data.allUsers);
+                const usersWithRankings = await Promise.all(
+                    response.data.allUsers.map(async (user) => {
+                        const rankingResponse = await axios.get(`https://sos-backend-4a2p.onrender.com/result/rankings/${user._id}`);
+                        return { ...user, ...rankingResponse.data };
+                    })
+                );
+
+                setUsers(usersWithRankings);
                 setLoading(false);
             } catch (err) {
                 console.error("Error fetching users:", err);
@@ -37,14 +35,34 @@ function HomePage() {
             }
         };
 
-        loginUserControl()
+        
         fetchUsers();
-    }, []);
+    }, [loginUser]);
 
-    // const findGame = async () => {
-    //     const response = await axios.get("http://localhost:3001/game/find", { withCredentials: true })
-    //     console.log(response.data.user);
-    // }
+    useEffect(() => {
+        if (!tableRef.current || !headerRef.current || !loginUser) return;
+    
+        const userRow = tableRef.current.querySelector(`tr[data-id="${loginUser._id}"]`);
+        if (userRow) {
+            // Kullanıcı satırının üstündeki satırı bul
+            const previousRow = userRow.previousElementSibling;
+    
+            // Kullanıcı satırı varsa ve üst satır varsa
+            if (previousRow) {
+                // Sabit başlık yüksekliğini al
+                const headerHeight = headerRef.current.offsetHeight;
+    
+                // Üst satıra kaydır
+                previousRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+                // Kaydırma pozisyonunu başlık yüksekliği için ayarla
+                tableRef.current.scrollTop -= headerHeight;
+            } else {
+                // Kullanıcı ilk satırdaysa, kullanıcı satırına kaydır
+                userRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }, [users, loginUser]);
 
     const renderResultIcon = (result) => {
         switch (result) { // Handle case-insensitive results
@@ -55,75 +73,71 @@ function HomePage() {
             case 'Lose':
                 return <FaTimesCircle style={{ color: 'rgba(255, 99, 132, 0.8)' }} />;
             default:
-                return result; // Display the raw result if not recognized
+                return result;
         }
     };
-
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error loading users. Please try again later.</div>;
 
     return (
-        <div className={styles.container}>
-            <div className={styles.leftSection}>
-                <h1 className={styles.title}>Dikkat! Potansiyel liderler!</h1>
-                <p>Hemen Oynamaya Başla ve Liderlik Tablosunda Yerini Al!</p>
-                <p>Kendinizi kanıtlama ve zirveye tırmanma zamanı geldi! Liderlik tablosunda yerinizi almak için hemen oynamaya başlayın ve rakiplerinizi geride bırakın.</p>
-                <p>Ne bekliyorsunuz?</p>
-                <ul>
-                    <li>Heyecan verici bir mücadeleye dalın ve becerilerinizi test edin.</li>
-                    <li>Kendinizi geliştirmek ve yeni zirvelere ulaşmak için fırsat yakalayın.</li>
-                    <li>Liderlik tablosunda yerinizi alarak ödüller ve tanınma kazanın.</li>
-                </ul>
-                {/* <div style={{ textAlign: 'center', lineHeight: '5rem' }}> 
-                    <TbArrowLoopRight2 style={{ fontSize: '2rem', display: 'inline-block', verticalAlign: 'middle', transform: 'rotate(90deg)' }} />
-                </div>
-                <button onClick={findGame} className={styles.btn}>Oyun Ara</button> */}
-            </div>
-
-            <div className={styles.rightSection}>                
-                <h1 className={styles.title}>Liderlik Tablosu</h1>
-                <div className={styles.pointTable}>
-                    <table className={styles.table}>
-                        <thead>
-                            <tr>
-                                <th className={styles.td}>User Name</th>
-                                <th className={styles.td}>Point</th>
-                                <th className={styles.td}>Total Games</th>
-                                <th className={styles.td}>Games Won</th>
-                                <th className={styles.td}>Last 5 Games</th>
+        <div className={styles.container}>                            
+            <h1 className={styles.title}>Liderlik Tablosu</h1>
+            <div className={styles.pointTable}>
+            <div ref={headerRef} className={styles.fixedHeader}></div>  {/*başlığı sabitliyor*/}
+                <table className={styles.table} ref={tableRef}>
+                    <thead>
+                        <tr>
+                            <th className={styles.td}>Sıralamanız</th>
+                            <th className={styles.td}>User Name</th>
+                            <th className={styles.td}>Point</th>
+                            <th className={styles.td}>Total Games</th>
+                            <th className={styles.td}>Games Won</th>
+                            <th className={styles.td}>Last 5 Games</th>
+                            <th className={styles.td}>1st</th>
+                            <th className={styles.td}>2nd</th>
+                            <th className={styles.td}>3rd</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user, i) => (
+                            <tr key={user._id} data-id={user._id} className={user._id === loginUser._id ? styles.highlightRow : ''}>
+                                <td className={styles.td}>{i + 1}</td>
+                                <td className={styles.td}>{user.userName}</td>
+                                <td className={styles.td}>{user.point}</td>
+                                <td className={styles.td}>{user.totalGames}</td>
+                                <td className={styles.td}>{user.gamesWon}</td>
+                                <td className={styles.td}>
+                                    {user.games.slice(-5).map((game, j) => (
+                                        <span key={j} style={{ marginRight: "5px", display: "inline-block" }}>
+                                            {renderResultIcon(game)}
+                                        </span>
+                                    ))}
+                                </td>
+                                <td className={styles.td}>{user.firstPlace}</td>
+                                <td className={styles.td}>{user.secondPlace}</td>
+                                <td className={styles.td}>{user.thirdPlace}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user, i) => (
-                                <tr key={i}>
-                                    <td className={styles.td}>{user.userName}</td>
-                                    <td className={styles.td}>{user.point}</td>
-                                    <td className={styles.td}>{user.totalGames}</td>
-                                    <td className={styles.td}>{user.gamesWon}</td>
-                                    <td className={styles.td}>
-                                        {user.games.slice(-5).map((game, j) => (
-                                            <span key={j} style={{ marginRight: "5px", display: "inline-block" }}>
-                                                {renderResultIcon(game)}
-                                            </span>
-                                        ))}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                        ))}
+                    </tbody>
+                </table>
             </div>
+            
         </div>
     );
 }
 
 export default function Home() {
     const [loginUser, setLoginUser] = useState();
+    const router = useRouter()
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await axios.get("http://localhost:3001/page/home", { withCredentials: true })
+            const response = await axios.get("https://sos-backend-4a2p.onrender.com/page/home", { withCredentials: true })
+            if (response.data.loginUser === null) {
+                router.push("/auth/login")
+            }
+            
             setLoginUser(response.data.loginUser)
         }
 
@@ -133,7 +147,7 @@ export default function Home() {
     return (
         <>
             <AppBar user={loginUser} />
-            <HomePage />
+            {loginUser && <HomePage loginUser={loginUser} />}            
         </>
     );
 }

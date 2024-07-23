@@ -20,8 +20,7 @@ function Profile() {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await axios.get("http://localhost:3001/page/home", { withCredentials: true })
-            console.log(response.data.loginUser);
+            const response = await axios.get("https://sos-backend-4a2p.onrender.com/page/home", { withCredentials: true })
             setLoginUser(response.data.loginUser)
         }
 
@@ -52,7 +51,7 @@ function Profile() {
             loginUser.password = password
         }
 
-        const response = await axios.post('http://localhost:3001/user/update', { loginUser }, { withCredentials: true });
+        const response = await axios.post('https://sos-backend-4a2p.onrender.com/user/update', { loginUser }, { withCredentials: true });
         setLoginUser(response.data.user)
 
         if (response.data.success) {
