@@ -6,12 +6,12 @@ import styles from "./styles.module.css";
 import AppBar from "./components/appbar";
 import { FaCheckCircle, FaMinusCircle, FaTimesCircle } from "react-icons/fa";
 
-function HomePage({ loginUser }) {
-    const [users, setUsers] = useState<any>([])
+function HomePage({ loginUser } : {loginUser: any}) {
+    const [users, setUsers] = useState<any[]>([])
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const tableRef = useRef(null);
-    const headerRef = useRef(null);
+    const tableRef = useRef<any>(null);
+    const headerRef = useRef<any>(null);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -20,7 +20,7 @@ function HomePage({ loginUser }) {
                 response.data.allUsers.sort((a: { point: number }, b: { point: number }) => b.point - a.point);
 
                 const usersWithRankings = await Promise.all(
-                    response.data.allUsers.map(async (user) => {
+                    response.data.allUsers.map(async (user:any) => {
                         const rankingResponse = await axios.get(`https://sos-backend-4a2p.onrender.com/result/rankings/${user._id}`);
                         return { ...user, ...rankingResponse.data };
                     })
@@ -64,7 +64,7 @@ function HomePage({ loginUser }) {
         }
     }, [users, loginUser]);
 
-    const renderResultIcon = (result) => {
+    const renderResultIcon = (result:any) => {
         switch (result) { // Handle case-insensitive results
             case 'Win':
                 return <FaCheckCircle style={{ color: 'rgba(75, 192, 192, 0.8)' }} />;
@@ -108,7 +108,7 @@ function HomePage({ loginUser }) {
                                 <td className={styles.td}>{user.totalGames}</td>
                                 <td className={styles.td}>{user.gamesWon}</td>
                                 <td className={styles.td}>
-                                    {user.games.slice(-5).map((game, j) => (
+                                    {user.games.slice(-5).map((game:any, j:any) => (
                                         <span key={j} style={{ marginRight: "5px", display: "inline-block" }}>
                                             {renderResultIcon(game)}
                                         </span>

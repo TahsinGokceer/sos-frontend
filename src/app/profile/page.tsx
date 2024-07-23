@@ -6,7 +6,7 @@ import AppBar from "../components/appbar"
 import styles from "./styles.module.css"
 
 function Profile() {
-    const [loginUser, setLoginUser] = useState();
+    const [loginUser, setLoginUser] = useState<any>();
     const [userName, setUserName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

@@ -9,9 +9,9 @@ import PieChart from "../components/PieChart/pieChart";
 import styles from "./styles.module.css"
 
 function Mygames() {
-    const [loginUser, setLoginUser] = useState();
-    const [lastGames, setLastGames] = useState([])
-    const [tournaments, setTournaments] = useState([]);
+    const [loginUser, setLoginUser] = useState<any>();
+    const [lastGames, setLastGames] = useState<any[]>([])
+    const [tournaments, setTournaments] = useState<any[]>([]);
 
 
     useEffect(() => {
@@ -80,7 +80,7 @@ function Mygames() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {tournaments.map(tournament => (
+                                    {tournaments.map((tournament) => (
                                         <tr key={tournament._id}>
                                             <td>{tournament.TournamentType}</td>
                                             <td>{tournament.maxPlayer}</td>
