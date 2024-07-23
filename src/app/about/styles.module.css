@@ -1,3 +1,59 @@
-.mainContainer {
-    background: linear-gradient(45deg, #9890e3 0%, #b1f4cf 100%);
+/* background */
+.background {
+    background-image: url("/images/wallpaper.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+/* appBarContainer */
+.appBarContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* container */
+.container {
+    padding: 40px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 50px auto 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* title */
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* text */
+.text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* list */
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* listItem */
+.listItem {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #555;
 }

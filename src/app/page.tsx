@@ -134,6 +134,8 @@ export default function Home() {
     useEffect(() => {
         const fetchUser = async () => {
             const response = await axios.get("https://sos-backend-4a2p.onrender.com/page/home", { withCredentials: true })
+            console.log(response.data);
+            
             if (response.data.loginUser === null) {
                 router.push("/auth/login")
             }
