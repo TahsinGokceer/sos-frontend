@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import styles from "./appbar.module.css";
 import { useState, useRef, useEffect } from "react";
 
-const AppBar = ({ user }) => {
+const AppBar = ({ user }: { user: any }) => {
     const router = useRouter()
     const [isShow, setIsShow] = useState(false)
     const menuRef = useRef(null);
