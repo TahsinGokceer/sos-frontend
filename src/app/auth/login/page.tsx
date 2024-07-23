@@ -24,8 +24,6 @@ export default function Login() {
             
             
             if (response.data.success) {
-                console.log("Giriş başarılı");
-                
                 router.push('/');
             } else {
                 console.log("Bir şeyler yanlış");

@@ -13,9 +13,9 @@ const AppBar = ({ user }: { user: any }) => {
     const [isShow, setIsShow] = useState(false)
     const menuRef = useRef<HTMLDivElement>(null);
 
-    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = async (e:any) => {
         e.preventDefault()
-        await axios.get("https://sos-backend-4a2p.onrender.com/user/logout", { withCredentials: true })
+        await axios.get("https://sos-backend-4a2p.onrender.com/user/logout", { withCredentials: true })        
         router.push("/auth/login")
     }
 
@@ -69,7 +69,7 @@ const AppBar = ({ user }: { user: any }) => {
                                     <Link className={styles.link} href="/mygames">{<BiSolidChess className={styles.icon2} />} My Games</Link>
                                 </li>
                                 <li>
-                                    <Link className={styles.link} onClick={e => handleClick} href="/auth/login">{<IoIosLogOut className={styles.icon2} />} Logout</Link>
+                                    <Link className={styles.link} onClick={e => handleClick(e)} href="/auth/login">{<IoIosLogOut className={styles.icon2} />} Logout</Link>
                                 </li>
                             </ul>
                         </div>
