@@ -38,7 +38,7 @@ function Contact() {
                     />
                     <textarea
                         placeholder="Your Message"
-                        rows="5"
+                        rows={5}
                         style={{ padding: '10px', margin: '10px 0', width: '80%', borderRadius: '5px', border: '1px solid #ccc' }}
                     ></textarea>
                     <button
