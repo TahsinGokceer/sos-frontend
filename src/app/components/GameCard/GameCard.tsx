@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 
-function GameCard({game}){
+function GameCard({game}: { game: any }){
     const [result, setResult] = useState(0)
 
     useEffect(() => {
